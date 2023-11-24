@@ -1,0 +1,108 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "BOOTCAMP",
+    "dateExported": "2023-11-24T14:19:29.880Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5c127801-1356-4452-95eb-e3c68db4fe40",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Alterar uma  ONG",
+            "url": "http://localhost:3030/ongs/45678912345",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2023-11-24T13:34:19.762Z",
+            "modified": "2023-11-24T14:02:45.532Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"ONG REFLORESTA BRASIL\",\n  \"cnpj\": \"45678912345\",\n  \"cidade\": \"Vitoria\",\n  \"areas\":{}\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b864ed00-f835-4ba4-bfec-19aa583af245",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Excluir uma  ONG ",
+            "url": "http://localhost:3030/ongs/45678912345",
+            "method": "DELETE",
+            "sortNum": 12500,
+            "created": "2023-11-24T14:11:06.806Z",
+            "modified": "2023-11-24T14:11:51.609Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3e345095-0884-4e12-be86-1e86d3ba99a6",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Criar uma ONG",
+            "url": "http://localhost:3030/ongs",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-11-24T13:56:33.986Z",
+            "modified": "2023-11-24T14:17:17.954Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"ONG REPLANTAR\",\n  \"cnpj\": \"789456121378\",\n  \"cidade\": \"Jacarei\",\n  \"areas\":{}\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "783d7dc7-8156-4bbc-bf46-684142059136",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Criar outra ONG",
+            "url": "http://localhost:3030/ongs",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-11-24T13:34:31.298Z",
+            "modified": "2023-11-24T13:34:31.299Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Teste ONG\",\n  \"cnpj\": \"12345678901\",\n  \"cidade\": \"Sao Paulo\",\n  \"areas\":{}\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7fd65670-1584-454e-81fb-86549194fc47",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Busca todas ONGS cadastradas",
+            "url": "http://localhost:3030/ongs",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-11-24T13:41:47.924Z",
+            "modified": "2023-11-24T13:41:47.924Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ec0648d8-8b08-4770-897d-a02671774ea8",
+            "colId": "2bddbfc9-35c8-4a5f-a679-73fdca7d3ce1",
+            "containerId": "",
+            "name": "Busca todas ONGS cadastradas Copy",
+            "url": "http://localhost:3030/ongs/45678912345",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-11-24T14:18:20.087Z",
+            "modified": "2023-11-24T14:19:02.699Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
