@@ -1,0 +1,94 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "BOOTCAMP-ONGS",
+    "dateExported": "2023-11-25T17:03:56.334Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "03509b9b-efb0-4a24-86db-251b147e0687",
+            "colId": "7715aa5c-581d-4d99-95c2-6429bc678ad3",
+            "containerId": "",
+            "name": "Criar ONG",
+            "url": "http://localhost:3030/ongs",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-11-25T15:05:08.293Z",
+            "modified": "2023-11-25T15:20:33.220Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"ONG Reflorestando\",\n  \"cnpj\": \"67890123456\",\n  \"cidade\": \"Palmas\",\n  \"areas\": {}\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3902daa6-db60-4bdb-a089-a49a99450f2e",
+            "colId": "7715aa5c-581d-4d99-95c2-6429bc678ad3",
+            "containerId": "",
+            "name": "Buscar ONGS",
+            "url": "http://localhost:3030/ongs",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-25T15:21:19.454Z",
+            "modified": "2023-11-25T15:22:13.915Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "da124a34-1d78-4461-b79c-ad9f95ebd85b",
+            "colId": "7715aa5c-581d-4d99-95c2-6429bc678ad3",
+            "containerId": "",
+            "name": "Buscar ONGS por CNPJ",
+            "url": "http://localhost:3030/ongs/12345678901",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-11-25T15:22:57.204Z",
+            "modified": "2023-11-25T15:27:51.011Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "69f9bcb4-c764-4e14-a13f-b747ee9c3183",
+            "colId": "7715aa5c-581d-4d99-95c2-6429bc678ad3",
+            "containerId": "",
+            "name": "Alterar ONG",
+            "url": "http://localhost:3030/ongs/12345678901",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-11-25T15:28:55.581Z",
+            "modified": "2023-11-25T15:30:27.755Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"id\": 2,\n  \"nome\": \"ONG Refloresta\",\n  \"cnpj\": \"12345678901\",\n  \"cidade\": \"Campinas\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0e75d846-ba1a-4614-9038-f0b0e6cdabf6",
+            "colId": "7715aa5c-581d-4d99-95c2-6429bc678ad3",
+            "containerId": "",
+            "name": "Excluir ONG",
+            "url": "http://localhost:3030/ongs/67890123456",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-11-25T15:31:54.899Z",
+            "modified": "2023-11-25T15:32:38.002Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"id\": 2,\n  \"nome\": \"ONG Refloresta\",\n  \"cnpj\": \"12345678901\",\n  \"cidade\": \"Campinas\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
