@@ -29,11 +29,22 @@ export class OngsService {
   }
 
   async findOne(cnpj: string) {
+    const ongExists = await this.prisma.oNGS.findUnique({
+      where: {
+        cnpj,
+      }
+    })
+
+    if(!ongExists) {
+      throw new Error("ONG não existe no sistema !")
+    }
+
     return await this.prisma.oNGS.findUnique({
       where: {
         cnpj,
       }
     })
+
   }
 
   async update(cnpj: string, data: OngDto) {
