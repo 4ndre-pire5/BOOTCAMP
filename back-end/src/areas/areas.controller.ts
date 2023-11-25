@@ -1,34 +1,35 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { AreasService } from './areas.service';
-import { CreateAreaDto } from './dto/create-area.dto';
-import { UpdateAreaDto } from './dto/update-area.dto';
+import { AreaDto } from './dto/area.dto';
+import { query } from 'express';
 
 @Controller('areas')
 export class AreasController {
   constructor(private readonly areasService: AreasService) {}
 
   @Post()
-  create(@Body() createAreaDto: CreateAreaDto) {
-    return this.areasService.create(createAreaDto);
+  create(@Body() data: AreaDto) {
+    return this.areasService.create(data);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.areasService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: number) {
     return this.areasService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAreaDto: UpdateAreaDto) {
-    return this.areasService.update(+id, updateAreaDto);
+  @Put(':id')
+  update(@Param('id') id: number, @Body() data: AreaDto) {
+    return this.areasService.update(+id, data);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.areasService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.areasService.delete(+id);
   }
+
 }

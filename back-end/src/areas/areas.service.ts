@@ -1,26 +1,77 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAreaDto } from './dto/create-area.dto';
-import { UpdateAreaDto } from './dto/update-area.dto';
+import { AreaDto } from './dto/area.dto';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class AreasService {
-  create(createAreaDto: CreateAreaDto) {
-    return 'This action adds a new area';
+
+  constructor(private prisma: PrismaService) {}
+
+  async create(data: AreaDto) {
+    const area = await this.prisma.areas.create({
+      data,
+    })
+    return area;
   }
 
   findAll() {
-    return `This action returns all areas`;
+    return this.prisma.areas.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} area`;
+  async findOne(id: number) {
+    const areaExists = await this.prisma.areas.findUnique({
+      where: {
+        id,
+      }
+    })
+
+    if(!areaExists) {
+      throw new Error("Area não existe no sistema !")
+    }
+
+    return await this.prisma.areas.findUnique({
+      where: {
+        id,
+      }
+    })
+
   }
 
-  update(id: number, updateAreaDto: UpdateAreaDto) {
-    return `This action updates a #${id} area`;
+  async update(id: number, data: AreaDto) {
+    const areaExists = await this.prisma.areas.findUnique({
+      where: {
+        id,
+      }
+    })
+
+    if(!areaExists) {
+      throw new Error("Area não existe no sistema !")
+    }
+
+    return await this.prisma.areas.update({
+      data,
+      where: {
+        id,
+      }
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} area`;
+  async delete(id: number) {
+    const areaExistss = await this.prisma.areas.findUnique({
+      where: {
+        id,
+      }
+    })
+
+    if(!areaExistss) {
+      throw new Error("ONG não existe no sistema !")
+    }
+
+    return await this.prisma.areas.delete({
+      where: {
+        id,
+      }
+    })
   }
+
 }
