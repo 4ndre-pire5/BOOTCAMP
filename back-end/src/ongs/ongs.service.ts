@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { OngDto } from './dto/ong.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateOngDto, UpdateOngDto } from './dto/ong.dto';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -7,80 +7,79 @@ export class OngsService {
 
   constructor(private prisma: PrismaService) {}
 
-  async create(data: OngDto) {
+  async create(dataOng: CreateOngDto) {
     const ongExists = await this.prisma.oNGS.findFirst({
-      where: {
-        nome: data.nome
-      }
+      where: { nome: dataOng.nome }
     })
 
     if(ongExists) {
-      throw new Error("Ong já existe no sistema")
+      // throw new Error("Ong já existe no sistema")
+      throw new NotFoundException('ONG já existe no sistema')
+
     }
 
     const ong = await this.prisma.oNGS.create({
-      data,
+      data: dataOng,
     })
     return ong;
   }
 
-  findAll() {
-    return this.prisma.oNGS.findMany();
+  async findAll() {
+    return this.prisma.oNGS.findMany({
+      include: { areas: true }
+    });
+
   }
 
   async findOne(cnpj: string) {
     const ongExists = await this.prisma.oNGS.findUnique({
-      where: {
-        cnpj,
-      }
+      where: { cnpj },
+      include: { areas: true }
     })
 
     if(!ongExists) {
-      throw new Error("ONG não existe no sistema !")
+      // throw new Error("ONG não existe no sistema !")
+      throw new NotFoundException('ONG não existe no sistema')
     }
 
-    return await this.prisma.oNGS.findUnique({
-      where: {
-        cnpj,
-      }
-    })
+    return ongExists;
+
+    // return await this.prisma.oNGS.findUnique({
+    //   where: {
+    //     cnpj,
+    //   }
+    // })
 
   }
 
-  async update(cnpj: string, data: OngDto) {
+  async update(cnpj: string, dataOng: UpdateOngDto) {
     const ongExists = await this.prisma.oNGS.findUnique({
-      where: {
-        cnpj,
-      }
+      where: { cnpj }
     })
 
     if(!ongExists) {
       throw new Error("ONG não existe no sistema !")
     }
 
-    return await this.prisma.oNGS.update({
-      data,
-      where: {
-        cnpj,
-      }
+    const { nome, cidade } = dataOng;
+    return this.prisma.oNGS.update({
+      where: { cnpj },
+      data: { nome, cidade },
     })
   }
 
   async delete(cnpj: string) {
     const ongExists = await this.prisma.oNGS.findUnique({
-      where: {
-        cnpj,
-      }
+      where: { cnpj }
     })
 
     if(!ongExists) {
-      throw new Error("ONG não existe no sistema !")
+      // throw new Error("ONG não existe no sistema !")
+      throw new NotFoundException('ONG não existe no sistema')
     }
 
     return await this.prisma.oNGS.delete({
-      where: {
-        cnpj,
-      }
+      where: { cnpj }
     })
   }
 

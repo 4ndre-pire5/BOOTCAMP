@@ -1,14 +1,14 @@
 import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { OngsService } from './ongs.service';
-import { OngDto } from './dto/ong.dto';
+import { CreateOngDto, UpdateOngDto } from './dto/ong.dto';
 
 @Controller('ongs')
 export class OngsController {
   constructor(private readonly ongsService: OngsService) {}
 
   @Post()
-  create(@Body() data: OngDto) {
-    return this.ongsService.create(data);
+  create(@Body() dataOng: CreateOngDto) {
+    return this.ongsService.create(dataOng);
   }
 
   @Get()
@@ -22,8 +22,8 @@ export class OngsController {
   }
 
   @Put(':cnpj')
-  async update(@Param('cnpj') cnpj: string, @Body() data: OngDto) {
-    return this.ongsService.update(cnpj, data);
+  async update(@Param('cnpj') cnpj: string, @Body() dataOng: UpdateOngDto) {
+    return this.ongsService.update(cnpj, dataOng);
   }
 
   @Delete(':cnpj')

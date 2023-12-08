@@ -4,21 +4,35 @@ import SignInButton from "./SignInButton";
 
 const AppBar = () => {
   return (
-    <header className="flex gap-4 p-4 bg-gradient-to-b from-white to-gray-200 shadow">
-      <Link className="transition-colors hover:text-blue-500" href={"/"}>
-        Home Page
+    <header className="flex gap-4 p-4 bg-lime-950">
+      <Link className="text-lime-700 font-bold transition-colors hover:text-lime-500" 
+        href={"/"}
+      >
+        App Refloresta
       </Link>
       <Link
-        className="transition-colors hover:text-blue-500"
-        href={"/dashboard"}
+        className="text-lime-700 font-bold transition-colors hover:text-lime-500"
+        href={"/sobre"}
       >
-        Dashboard
+        Sobre
       </Link>
       <Link
-        className="transition-colors hover:text-blue-500"
-        href={"/teste"}
+        className="text-lime-700 font-bold transition-colors hover:text-lime-500"
+        href={"/mapa"}
       >
-        Teste
+        Mapa
+      </Link>
+      <Link
+        className="text-lime-700 font-bold transition-colors hover:text-lime-500"
+        href={"/quem-somos"}
+      >
+        Quem somos
+      </Link>
+      <Link
+        className="text-lime-700 font-bold transition-colors hover:text-lime-500"
+        href={"/ongs"}
+      >
+        ONGs
       </Link>
 
       <SignInButton />

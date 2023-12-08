@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { AreaDto } from './dto/area.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateAreaDto, UpdateAreaDto } from './dto/area.dto';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -7,71 +7,77 @@ export class AreasService {
 
   constructor(private prisma: PrismaService) {}
 
-  async create(data: AreaDto) {
-    const area = await this.prisma.areas.create({
-      data,
-    })
-    return area;
+  async create(dataArea: CreateAreaDto) {
+    const { localizacao, tamanho, ongId } = dataArea;
+    return this.prisma.areas.create({
+      data: {
+        localizacao,
+        tamanho,
+        ong: {
+          connect: {
+            id: ongId
+          }
+        }
+      }
+    });
   }
 
-  findAll() {
+  async findAll() {
     return this.prisma.areas.findMany();
   }
 
   async findOne(id: number) {
     const areaExists = await this.prisma.areas.findUnique({
-      where: {
-        id,
-      }
-    })
+      where: { id }
+    });
 
     if(!areaExists) {
-      throw new Error("Area não existe no sistema !")
+      // throw new Error("Area não existe no sistema !")
+      throw new NotFoundException("Area não existe no sistema !")
     }
+    return areaExists;
 
-    return await this.prisma.areas.findUnique({
-      where: {
-        id,
-      }
-    })
+    // return await this.prisma.areas.findUnique({
+    //   where: {
+    //     id,
+    //   }
+    // })
 
   }
 
-  async update(id: number, data: AreaDto) {
+  async update(id: number, dataArea: UpdateAreaDto) {
     const areaExists = await this.prisma.areas.findUnique({
-      where: {
-        id,
-      }
-    })
+      where: { id }
+    });
 
     if(!areaExists) {
-      throw new Error("Area não existe no sistema !")
+      // throw new Error("Area não existe no sistema !")
+      throw new NotFoundException("Area não existe no sistema !")
     }
-
-    return await this.prisma.areas.update({
-      data,
-      where: {
-        id,
+    
+    const { localizacao, tamanho } = dataArea;
+    return this.prisma.areas.update({
+      where: { id },
+      data: {
+        localizacao,
+        tamanho,
       }
-    })
+    });
   }
 
   async delete(id: number) {
     const areaExistss = await this.prisma.areas.findUnique({
-      where: {
-        id,
-      }
+      where: { id }
     })
 
     if(!areaExistss) {
-      throw new Error("ONG não existe no sistema !")
+      // throw new Error("ONG não existe no sistema !")
+      throw new NotFoundException("Area não existe no sistema !")
     }
 
-    return await this.prisma.areas.delete({
-      where: {
-        id,
-      }
-    })
+    return this.prisma.areas.delete({
+      where: { id }
+    });
   }
 
 }
