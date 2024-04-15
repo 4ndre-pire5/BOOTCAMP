@@ -7,6 +7,7 @@
 //     </div>
 //   );
 // }
+<<<<<<< HEAD
 // import "./style.css";
 import "@/app/home/pages/Pginainicial_0/style.css"
 import { Div1 as Div1_0 } from "./home/pages/Pginainicial_0/Div1_0";
@@ -29,3 +30,12 @@ export default function Pginainicial(){
   );
 };
 
+=======
+import Home from "./home";
+
+export default function App() {
+  return(
+    <Home />
+  )
+}
+>>>>>>> e17ec95824c23eb7d7e9295c535817c691edbbf2

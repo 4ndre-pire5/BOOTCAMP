@@ -1,0 +1,12 @@
+.Div1{
+    display: flex;
+    background-size: cover;
+}
+
+.image{
+    display: flex;
+    position: relative;
+}
+
+
+
