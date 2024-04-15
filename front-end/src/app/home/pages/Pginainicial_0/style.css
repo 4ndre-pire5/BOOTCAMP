@@ -1,0 +1,18 @@
+.Pginainicial_41_54 {
+  width: min(1441.0001220703125px, 100%);
+  min-height: 2617.029052734375px;
+  background-color: rgba(
+    85.27782842516899,
+    171.48751884698868,
+    32.439653500914574,
+    1
+  );
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 8px;
+}
